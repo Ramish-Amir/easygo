@@ -7,6 +7,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useEffect } from "react";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
+import { ScrollView } from "react-native";
 
 function LoginScreen() {
   const navigation = useNavigation();
@@ -40,34 +41,38 @@ function LoginScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.logo}>EASY-GO!</Text>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.logo}>EASY-GO!</Text>
 
-      <View>
-        <Text style={styles.welcome}>Login to your account</Text>
-      </View>
+        <View>
+          <Text style={styles.welcome}>Login to your account</Text>
+        </View>
 
-      <View style={styles.btnContainer}>
-        <TextInput
-          style={styles.btn}
-          value={loginForm.email}
-          placeholder={"Username"}
-          onChangeText={(value) => setLoginForm({ ...loginForm, email: value })}
-        />
-        <TextInput
-          style={styles.btn}
-          value={loginForm.password}
-          placeholder={"Password"}
-          secureTextEntry={true}
-          onChangeText={(value) =>
-            setLoginForm({ ...loginForm, password: value })
-          }
-        />
-        <Pressable style={styles.btn} onPress={handleLogin}>
-          <Text>{"Login"}</Text>
-        </Pressable>
-      </View>
-    </SafeAreaView>
+        <View style={styles.btnContainer}>
+          <TextInput
+            style={styles.btn}
+            value={loginForm.email}
+            placeholder={"Username"}
+            onChangeText={(value) =>
+              setLoginForm({ ...loginForm, email: value })
+            }
+          />
+          <TextInput
+            style={styles.btn}
+            value={loginForm.password}
+            placeholder={"Password"}
+            secureTextEntry={true}
+            onChangeText={(value) =>
+              setLoginForm({ ...loginForm, password: value })
+            }
+          />
+          <Pressable style={styles.btn} onPress={handleLogin}>
+            <Text>{"Login"}</Text>
+          </Pressable>
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
