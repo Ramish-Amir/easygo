@@ -31,10 +31,9 @@ function PaymentScreen() {
             day: "numeric",
             year: "numeric",
           };
-          const formattedDate = date.toLocaleDateString(
-            "en-US",
-            dateFormatOptions
-          );
+          const formattedDate = date.toLocaleDateString("en-US", {
+            timeZone: "America/Toronto",
+          });
 
           // Format time
           const timeFormatOptions = {
@@ -42,10 +41,9 @@ function PaymentScreen() {
             minute: "numeric",
             second: "numeric",
           };
-          const formattedTime = date.toLocaleTimeString(
-            "en-US",
-            timeFormatOptions
-          );
+          const formattedTime = date.toLocaleTimeString("en-US", {
+            timeZone: "America/Toronto",
+          });
 
           return (
             <View style={styles.balanceContainer} key={index}>

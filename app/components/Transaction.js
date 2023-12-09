@@ -19,7 +19,9 @@ function Transaction(props) {
     minute: "numeric",
     second: "numeric",
   };
-  const formattedTime = date.toLocaleTimeString("en-US", timeFormatOptions);
+  const formattedTime = date.toLocaleTimeString("en-US", {
+    timeZone: "America/Toronto",
+  });
 
   return (
     <View style={styles.balanceContainer}>

@@ -1,5 +1,5 @@
 import { db } from "../../firebase";
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, orderBy } from "firebase/firestore";
 
 const userCollectionName = "users";
 
@@ -41,7 +41,10 @@ export const getRecentPayment = async (userId) => {
 export const getTrasactionHistory = async (userId) => {
   try {
     const querySnapshot = await getDocs(
-      collection(db, userCollectionName, userId, "transaction")
+      query(
+        collection(db, userCollectionName, userId, "transaction"),
+        orderBy("time", "desc")
+      )
     );
     const transactions = [];
     querySnapshot.forEach((doc) => {
